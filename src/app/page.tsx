@@ -7,12 +7,14 @@ import Features from "@/components/ui/features";
 import FeaturesBlocks from "@/components/ui/features-blocks";
 import Footer from "@/components/ui/footer";
 
-export default async function Home() {
+export default function Home() {
   return (
-    <main className="flex h-full flex-col items-center justify-between p-20">
-      <Header />
-      <Hero />
-      <Footer />
+    <main className="flex min-h-screen flex-col items-center min-w-screen overflow-hidden p-4">
+      <div className="flex flex-col items-center w-[380px] h-screen pb-4">
+        <Header />
+        <Hero />
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -1,20 +1,23 @@
+import { RoommateData } from "@/app/home/page";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
-import { Profile } from "../lib/Profile.utils";
+interface roommateData {
+  roommateData: RoommateData;
+}
 
-function ProfileBio(props: Profile) {
+const ProfileBio: React.FC<roommateData> = ({ roommateData }) => {
   return (
     <>
       <div className="flex flex-col w-full p-4 text-wrap flex-grow overflow-auto">
         <div className="w-[348px] text-wrap">
           <h1 className="font-semibold text-4xl break-words">
-            {props.first_name} {props.last_name}
+            {roommateData.first_name} {roommateData.last_name}
           </h1>
         </div>
         <div className="">
           <Badge variant="outline" className="text-sm mt-2 py-1">
-            {props.gender}
+            {roommateData.gender}
           </Badge>
         </div>
 
@@ -23,7 +26,7 @@ function ProfileBio(props: Profile) {
         <div className="flex flex-col">
           <h2 className="text-lg">Preferred Boroughs:</h2>
           <div className="flex flex-wrap">
-            {props.boroughs.map((borough, index) => (
+            {roommateData.boroughs.map((borough, index) => (
               <div key={index} className="inline-block mr-2 mb-2">
                 <Badge
                   variant="outline"
@@ -40,7 +43,7 @@ function ProfileBio(props: Profile) {
         </div>
 
         <div className="flex flex-col space-y-2">
-          {props.user_shower_value && (
+          {roommateData.user_shower_value && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Shower Frequency:</h2>
               <div className="flex items-end">
@@ -48,13 +51,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_shower_value}
+                  {roommateData.user_shower_value}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_clean_value && (
+          {roommateData.user_clean_value && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Room Cleanliness:</h2>
               <div className="flex items-end">
@@ -62,13 +65,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_clean_value}
+                  {roommateData.user_clean_value}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_friend_score && (
+          {roommateData.user_friend_score && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Friend Score:</h2>
               <div className="flex items-end">
@@ -76,13 +79,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_friend_score}
+                  {roommateData.user_friend_score}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_room_time_value && (
+          {roommateData.user_room_time_value && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Room Time:</h2>
               <div className="flex items-end">
@@ -90,13 +93,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_room_time_value}
+                  {roommateData.user_room_time_value}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_sleep_time && (
+          {roommateData.user_sleep_time && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Sleep Time:</h2>
               <div className="flex items-end">
@@ -104,13 +107,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_sleep_time}
+                  {roommateData.user_sleep_time}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_smoke !== undefined && (
+          {roommateData.user_smoke !== undefined && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Smoker:</h2>
               <div className="flex items-end">
@@ -118,13 +121,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_smoke ? "Yes" : "No"}
+                  {roommateData.user_smoke ? "Yes" : "No"}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_temp_value && (
+          {roommateData.user_temp_value && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Preferred Temperature:</h2>
               <div className="flex items-end">
@@ -132,13 +135,13 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_temp_value}
+                  {roommateData.user_temp_value}
                 </Badge>
               </div>
             </div>
           )}
 
-          {props.user_overnight_guest_value && (
+          {roommateData.user_overnight_guest_value && (
             <div className="flex space-x-2">
               <h2 className="pt-2 text-lg">Overnight Guests:</h2>
               <div className="flex items-end">
@@ -146,7 +149,7 @@ function ProfileBio(props: Profile) {
                   variant="outline"
                   className="text-sm flex items-center justify-center px-4"
                 >
-                  {props.user_overnight_guest_value}
+                  {roommateData.user_overnight_guest_value}
                 </Badge>
               </div>
             </div>
@@ -155,6 +158,6 @@ function ProfileBio(props: Profile) {
       </div>
     </>
   );
-}
+};
 
 export default ProfileBio;

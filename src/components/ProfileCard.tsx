@@ -5,6 +5,7 @@ import ProfileNavBar from "./ProfileNavBar";
 import ProfileImgCarousel from "./ProfileImgCarousel";
 import ProfileBio from "./ProfileBio";
 import { Profile } from "@/lib/Profile.utils";
+import { RoommateData } from "@/app/home/page";
 
 const props: Profile = {
   id: 12345,
@@ -22,18 +23,37 @@ const props: Profile = {
   boroughs: ["Manhattan", "Brooklyn"],
 };
 
-function ProfileCard() {
+interface Props {
+  roommateData: RoommateData;
+  setProfile: React.Dispatch<React.SetStateAction<RoommateData>>;
+  profileIdx: number;
+  setProfileIdx: React.Dispatch<React.SetStateAction<number>>;
+  id: string;
+}
+
+const ProfileCard: React.FC<Props> = ({
+  roommateData,
+  setProfile,
+  profileIdx,
+  setProfileIdx,
+  id,
+}) => {
+  const { first_name, last_name } = roommateData;
   return (
     <>
       <div className="flex flex-col h-screen items-center w-[380px]">
         <ProfileNavBar />
 
-        <ProfileImgCarousel />
-        <ProfileBio {...props} />
+        <ProfileImgCarousel first_name={first_name} last_name={last_name} />
+        <ProfileBio roommateData={roommateData} />
 
-        <ProfileButtons />
+        <ProfileButtons
+          setProfileIdx={setProfileIdx}
+          profileIdx={profileIdx}
+          id={id}
+        />
       </div>
     </>
   );
-}
+};
 export default ProfileCard;
